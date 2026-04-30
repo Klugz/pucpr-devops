@@ -49,8 +49,25 @@ describe("GET /health", () => {
   });
 });
 
+describe("GET /sobre", () => {
+  // Teste 8: rota /sobre retorna status 200
+  it("deve retornar status 200", async () => {
+    const res = await request(app).get("/sobre");
+    expect(res.statusCode).toBe(200);
+  });
+
+  // Teste 9: rota /sobre retorna os campos esperados
+  it("deve retornar os dados do projeto", async () => {
+    const res = await request(app).get("/sobre");
+    expect(res.body.projeto).toBe("pucpr-devops");
+    expect(res.body.disciplina).toBe("DevOps");
+    expect(res.body.instituicao).toBe("PUCPR");
+    expect(res.body.versao).toBe("1.0.0");
+  });
+});
+
 describe("Rota inexistente", () => {
-  // Teste 8: rota desconhecida retorna 404
+  // Teste 10: rota desconhecida retorna 404
   it("deve retornar status 404 para rotas não definidas", async () => {
     const res = await request(app).get("/rota-que-nao-existe");
     expect(res.statusCode).toBe(404);
