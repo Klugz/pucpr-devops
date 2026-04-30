@@ -17,4 +17,13 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
+app.get("/sobre", (req, res) => {
+  res.json({
+    projeto: "pucpr-devops",
+    disciplina: "DevOps",
+    instituicao: "PUCPR",
+    versao: "1.0.0",
+  });
+});
+
 module.exports = app;
